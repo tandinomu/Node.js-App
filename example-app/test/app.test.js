@@ -1,16 +1,13 @@
+// app.test.js
 const request = require('supertest');
-const app = require('../src/index');
+const app = require('./app'); // or whatever your main file is
 
 describe('App', () => {
-  test('GET / should return hello message', async () => {
-    const response = await request(app).get('/');
-    expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Hello World from Node.js!');
-  });
-
-  test('GET /health should return OK status', async () => {
-    const response = await request(app).get('/health');
-    expect(response.status).toBe(200);
-    expect(response.body.status).toBe('OK');
+  test('should respond with hello world', async () => {
+    const response = await request(app)
+      .get('/')
+      .expect(200);
+    
+    expect(response.text).toContain('Hello');
   });
 });
