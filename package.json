@@ -9,14 +9,18 @@
     "coverageDirectory": "coverage",
     "reporters": [
       "default",
-      ["jest-junit", {
-        "outputDirectory": "./",
-        "outputName": "junit.xml"
-      }]
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "./",
+          "outputName": "junit.xml"
+        }
+      ]
     ]
   },
   "devDependencies": {
     "jest": "^29.0.0",
-    "jest-junit": "^16.0.0"
+    "jest-junit": "^16.0.0",
+    "supertest": "^7.1.1"
   }
 }
