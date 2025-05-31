@@ -1,0 +1,17 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "Example Node.js app for testing shared library",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
