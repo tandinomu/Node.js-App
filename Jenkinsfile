@@ -13,18 +13,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm test -- --ci --reporters=jest-junit --passWithNoTests'
-      }
-      post {
-        always {
-          script {
-            if (fileExists('junit.xml')) {
-              junit 'junit.xml'
-            } else {
-              echo 'No junit.xml file found, skipping test results'
-            }
-          }
-        }
+        sh 'npm test -- --ci --passWithNoTests'
       }
     }
 
