@@ -1,28 +1,22 @@
 {
-  "name": "example-app",
-  "version": "1.0.0",
-  "description": "Example Node.js app for testing shared library",
-  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:ci": "jest --ci --reporters=default --reporters=jest-junit --coverage"
   },
-  "dependencies": {
-    "express": "^4.18.2"
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "reporters": [
+      "default",
+      ["jest-junit", {
+        "outputDirectory": "./",
+        "outputName": "junit.xml"
+      }]
+    ]
   },
   "devDependencies": {
-    "jest": "^29.5.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tandinomu/Node.js-App.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tandinomu/Node.js-App/issues"
-  },
-  "homepage": "https://github.com/tandinomu/Node.js-App#readme"
+    "jest": "^29.0.0",
+    "jest-junit": "^16.0.0"
+  }
 }
