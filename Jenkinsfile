@@ -17,7 +17,13 @@ pipeline {
       }
       post {
         always {
-          junit 'junit.xml'
+          script {
+            if (fileExists('junit.xml')) {
+              junit 'junit.xml'
+            } else {
+              echo 'No junit.xml file found, skipping test results'
+            }
+          }
         }
       }
     }
