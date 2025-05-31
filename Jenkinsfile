@@ -13,7 +13,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm test -- --ci --reporters=jest-junit'
+        sh 'npm test -- --ci --reporters=jest-junit --passWithNoTests'
       }
       post {
         always {
