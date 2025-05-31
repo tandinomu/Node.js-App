@@ -1,12 +1,37 @@
-@Library('nodejs-pipeline-library') _
+pipeline {
+  agent any
+  tools {
+    nodejs 'NodeJS-24.0.2'
+  }
 
-nodeJSPipeline {
-    nodeVersion = '18'
-    testScript = 'test'
-    dockerRepo = 'kanishapradhan'  // Replace with your DockerHub username
-    imageName = 'example-app'
-    registryCredentials = 'dockerhub-credentials'
-    runTests = true
-    buildDocker = true
-    pushToRegistry = true
+  stages {
+    stage('Install') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'npm test -- --ci --reporters=jest-junit'
+      }
+      post {
+        always {
+          junit 'junit.xml'
+        }
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploying to staging..."'
+      }
+    }
+  }
 }
