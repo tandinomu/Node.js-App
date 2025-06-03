@@ -5,8 +5,9 @@ pipeline {
     }
     
     environment {
+        PATH = "/usr/local/bin:/opt/homebrew/bin:${env.PATH}"
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        IMAGE_NAME = 'tandinomu/my-simple-app'  
+        IMAGE_NAME = 'tandinomu/my-simple-app'
     }
 
     stages {
